@@ -39,10 +39,8 @@ nodes:
       type: text
     documents: ${inputs.question}
     schema: ${data_loader.output}
-  provider: AzureOpenAI
-  connection: Project2-MIS_aoai
+  connection: open_ai_connection
   api: chat
-  module: promptflow.tools.aoai
   use_variants: false
 - name: executor_node
   type: python
@@ -66,8 +64,6 @@ nodes:
       type: text
     query: ${inputs.question}
     result: ${executor_node.output}
-  provider: AzureOpenAI
-  connection: Project2-MIS_aoai
+  connection: open_ai_connection
   api: chat
-  module: promptflow.tools.aoai
   use_variants: false

@@ -50,6 +50,35 @@
         }
       },
       "source": "data_synthesis.jinja2"
+    },
+    "data_retriver.py": {
+      "type": "python",
+      "inputs": {
+        "query": {
+          "type": [
+            "string"
+          ]
+        },
+        "search_connection": {
+          "type": [
+            "CognitiveSearchConnection"
+          ]
+        },
+        "index_name": {
+          "type": [
+            "string"
+          ]
+        },
+        "top_k": {
+          "type": [
+            "int"
+          ],
+          "default": "3"
+        }
+      },
+      "description": "Retrieve documents from Azure AI Search based on the user query.",
+      "source": "data_retriver.py",
+      "function": "retrieve_documents"
     }
   }
 }
