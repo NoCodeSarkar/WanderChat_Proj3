@@ -1,0 +1,69 @@
+id: template_chat_flow
+name: Template Chat Flow
+environment:
+  python_requirements_txt: requirements.txt
+inputs:
+  chat_history:
+    type: list
+    is_chat_input: false
+    is_chat_history: true
+  question:
+    type: string
+    is_chat_input: true
+outputs:
+  answer:
+    type: string
+    reference: ${data_synthesis.output}
+    is_chat_output: true
+nodes:
+- name: data_loader
+  type: python
+  source:
+    type: code
+    path: data_retriver.py
+  inputs:
+    search_connection: wanderchatsearch
+    index_name: chatwanrag
+    query: ${inputs.question}
+  use_variants: false
+- name: code_maker
+  type: llm
+  source:
+    type: code
+    path: data_converter.jinja2
+  inputs:
+    deployment_name: gpt-4.1-2
+    temperature: 1
+    top_p: 1
+    response_format:
+      type: text
+    documents: ${inputs.question}
+    schema: ${data_loader.output}
+  connection: open_ai_connection
+  api: chat
+  use_variants: false
+- name: executor_node
+  type: python
+  source:
+    type: code
+    path: data_extractor.py
+  inputs:
+    node_metadata: ${inputs.chat_history}
+    previous_node_output: ${code_maker.output}
+  use_variants: false
+- name: data_synthesis
+  type: llm
+  source:
+    type: code
+    path: data_synthesis.jinja2
+  inputs:
+    deployment_name: gpt-4.1-2
+    temperature: 1
+    top_p: 1
+    response_format:
+      type: text
+    query: ${inputs.question}
+    result: ${executor_node.output}
+  connection: open_ai_connection
+  api: chat
+  use_variants: false

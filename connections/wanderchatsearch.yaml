@@ -1,0 +1,8 @@
+$schema: https://azuremlschemas.azureedge.net/promptflow/latest/CognitiveSearchConnection.schema.json
+type: cognitive_search
+name: wanderchatsearch
+module: promptflow.connections
+api_base: https://project2-mis.services.ai.azure.com/models
+api_key: ${env:WANDERCHATSEARCH_API_KEY}
+api_version: 2025-01-01-Preview
+auth_mode: key
