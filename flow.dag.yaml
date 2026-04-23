@@ -1,5 +1,7 @@
 id: template_chat_flow
 name: Template Chat Flow
+environment:
+  python_requirements_txt: requirements.txt
 inputs:
   chat_history:
     type: list
@@ -69,6 +71,3 @@ nodes:
   api: chat
   module: promptflow.tools.aoai
   use_variants: false
-node_variants: {}
-environment:
-  python_requirements_txt: requirements.txt

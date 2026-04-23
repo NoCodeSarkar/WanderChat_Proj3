@@ -1,0 +1,55 @@
+{
+  "package": {},
+  "code": {
+    "data_converter.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "documents": {
+          "type": [
+            "string"
+          ]
+        },
+        "schema": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "data_converter.jinja2"
+    },
+    "data_extractor.py": {
+      "type": "python",
+      "inputs": {
+        "previous_node_output": {
+          "type": [
+            "string"
+          ]
+        },
+        "node_metadata": {
+          "type": [
+            "object"
+          ]
+        }
+      },
+      "description": "This function processes the output received from a preceding node.",
+      "source": "data_extractor.py",
+      "function": "extract_logic"
+    },
+    "data_synthesis.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "query": {
+          "type": [
+            "string"
+          ]
+        },
+        "result": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "data_synthesis.jinja2"
+    }
+  }
+}

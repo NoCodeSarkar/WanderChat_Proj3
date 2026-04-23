@@ -1,0 +1,35 @@
+{
+  "nodeLayouts": {
+    "inputs": {
+      "x": 290,
+      "y": 42,
+      "index": -1
+    },
+    "outputs": {
+      "x": 220,
+      "y": 712,
+      "index": -1
+    },
+    "data_loader": {
+      "x": 402.5,
+      "y": 176,
+      "index": 0
+    },
+    "code_maker": {
+      "x": 315,
+      "y": 310,
+      "index": 1
+    },
+    "executor_node": {
+      "x": 227.5,
+      "y": 444,
+      "index": 2
+    },
+    "data_synthesis": {
+      "x": 140,
+      "y": 578,
+      "index": 3
+    }
+  },
+  "orientation": "Vertical"
+}
